@@ -22,7 +22,7 @@ const Lista = () => {
 	return (
 		<div>
 			<form onSubmit={añadirTarea}>
-				<div className="form-row align-items-center">
+				<div className="d-flex form-row align-items-center">
 					<div className="col-auto">
 						<label className="sr-only" htmlFor="inlineFormInput">
 							Name
@@ -31,26 +31,34 @@ const Lista = () => {
 							type="text"
 							className="form-control mb-2"
 							id="inlineFormInput"
-							placeholder="Jane Doe"
+							placeholder="Añade tarea"
 							onChange={event => setTarea(event.target.value)}
 						/>
 					</div>
 					<div className="col-auto">
-						<button type="submit" className="btn btn-primary mb-2">
-							Submit
+						<button type="submit" className="btn btn-success mb-2">
+							Alistar
 						</button>
 					</div>
 				</div>
 			</form>
 			<div className="lista">
-				{listaTareas.map((element, index) => {
-					return (
-						<li key={index}>
-							{element}
-							<button onClick={() => eliminar(index)}>x</button>
-						</li>
-					);
-				})}
+				<ul className="list-group sm">
+					{listaTareas.map((element, index) => {
+						return (
+							<li
+								className="btn btn-outline-success mb-3"
+								key={index}>
+								{element}
+								<button
+									className="btn"
+									onClick={() => eliminar(index)}>
+									<i className="fas fa-arrow-alt-circle-down fa-2x"></i>
+								</button>
+							</li>
+						);
+					})}
+				</ul>
 			</div>
 
 			<div>
